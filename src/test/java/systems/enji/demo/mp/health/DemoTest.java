@@ -1,10 +1,7 @@
 package systems.enji.demo.mp.health;
 
-import java.io.StringReader;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -27,14 +24,33 @@ public class DemoTest {
   
   @Test
   public void readiness() {
+    
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(ENDPOINT + "/health/ready");
     
     String responseString = target.request().get(String.class);
-    JsonReader jsonReader = Json.createReader(new StringReader(responseString));
-    JsonObject jsonObject = jsonReader.readObject();
-    System.out.println(jsonObject);
+    System.out.println(responseString);
+    
+    // we only perform a simple assertion, no need to parse the JSON response
+//    JsonReader jsonReader = Json.createReader(new StringReader(responseString));
+//    JsonObject jsonObject = jsonReader.readObject();
+
+    assertTrue(responseString != null && responseString.contains(ReadinessCheck.class.getName()));
     
   }
+
+  @Test
+  public void liveness() {
+    
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(ENDPOINT + "/health/live");
+    
+    String responseString = target.request().get(String.class);
+    System.out.println(responseString);
+    
+    assertTrue(responseString != null && responseString.contains(LivenessCheck.class.getName()));
+    
+  }
+
 
 }
