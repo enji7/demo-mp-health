@@ -1,5 +1,6 @@
 package systems.enji.demo.mp.health;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.ws.rs.client.Client;
@@ -29,7 +30,7 @@ public class DemoTest {
 //    JsonReader jsonReader = Json.createReader(new StringReader(responseString));
 //    JsonObject jsonObject = jsonReader.readObject();
 
-    assertTrue(responseString != null);
+    assertNotNull(responseString);
     assertTrue(responseString.contains(ReadinessCheck.class.getName()));
     assertTrue(responseString.contains(ReadinessCheckProducer.class.getName()));
     
@@ -43,8 +44,9 @@ public class DemoTest {
     
     String responseString = target.request().get(String.class);
     System.out.println(responseString);
-    
-    assertTrue(responseString != null && responseString.contains(LivenessCheck.class.getName()));
+
+    assertNotNull(responseString);
+    assertTrue(responseString.contains(LivenessCheck.class.getName()));
     
   }
 
