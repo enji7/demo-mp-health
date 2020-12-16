@@ -9,7 +9,8 @@ import org.eclipse.microprofile.health.Readiness;
 /**
  * Checks whether the application is ready to process requests.
  * 
- * Liveness and readiness annotations can also be applied to a single class.
+ * Liveness and readiness annotations can also be applied together to a single class,
+ * or provided by a CDI producer.
  * 
  * There can be several liveness and readiness checks per application. 
  * In this case, there is no guaranteed order of invocation.

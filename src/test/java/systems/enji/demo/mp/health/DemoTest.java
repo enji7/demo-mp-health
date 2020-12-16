@@ -17,11 +17,6 @@ public class DemoTest {
   // beware: WildFly exposes health checks under a different port than the normal application
   private static final String ENDPOINT = "http://localhost:9990";
 
-  @BeforeAll
-  static void beforeAll() {
-    
-  }
-  
   @Test
   public void readiness() {
     
@@ -35,7 +30,9 @@ public class DemoTest {
 //    JsonReader jsonReader = Json.createReader(new StringReader(responseString));
 //    JsonObject jsonObject = jsonReader.readObject();
 
-    assertTrue(responseString != null && responseString.contains(ReadinessCheck.class.getName()));
+    assertTrue(responseString != null);
+    assertTrue(responseString.contains(ReadinessCheck.class.getName()));
+    assertTrue(responseString.contains(ReadinessCheckProducer.class.getName()));
     
   }
 
@@ -51,6 +48,5 @@ public class DemoTest {
     assertTrue(responseString != null && responseString.contains(LivenessCheck.class.getName()));
     
   }
-
 
 }

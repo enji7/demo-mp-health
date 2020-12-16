@@ -4,8 +4,6 @@ import systems.enji.demo.mp.health.api.IDemoService;
 
 /**
  * Demo service.
- * 
- * See interface for high-level documentation.
  */
 public class DemoService implements IDemoService {
 

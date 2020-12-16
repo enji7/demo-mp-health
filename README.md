@@ -6,6 +6,9 @@ Usage:
 
  1. Build and deploy this WAR on a compliant application server.
  1. Run JUnit tests.
+ 1. Invoke health checks via browser:
+    * <http://localhost:9990/health/ready>
+    * <http://localhost:9990/health/live>
 
 ## Resources
 
